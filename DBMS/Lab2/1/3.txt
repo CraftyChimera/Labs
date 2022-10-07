@@ -1,0 +1,12 @@
+mysql> select cname,COUNT(*) from Contestant JOIN Election using(ctid) JOIN Constituency using(cname) GROUP BY cname;
++-------+----------+
+| cname | COUNT(*) |
++-------+----------+
+| X     |        2 |
+| Y     |        1 |
+| Z     |        1 |
+| W     |        2 |
++-------+----------+
+4 rows in set (0.00 sec)
+
+

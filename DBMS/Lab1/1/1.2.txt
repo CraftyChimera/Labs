@@ -1,0 +1,10 @@
+Command:SELECT COUNT(*) FROM Student where dept_id in (SELECT dept_id FROM Department WHERE dept_name='cse');
+
+mysql> SELECT COUNT(*) FROM Student where dept_id in (SELECT dept_id FROM Department WHERE dept_name='cse');
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.02 sec)
+

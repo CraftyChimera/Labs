@@ -1,0 +1,19 @@
+mysql> SELECT COUNT(*) FROM Department LEFT JOIN Student using(dept_id) WHERE gender='M' GROUP BY dept_name;
++----------+
+| COUNT(*) |
++----------+
+|        3 |
+|        2 |
+|        2 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM Department LEFT JOIN Student using(dept_id) WHERE gender='F' GROUP BY dept_name;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
+|        2 |
++----------+
+2 rows in set (0.00 sec)
+

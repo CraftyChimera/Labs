@@ -1,0 +1,12 @@
+mysql> SELECT b_name,COUNT(e_name) as emp_count FROM Works GROUP BY Works.b_name Having 
+    -> COUNT(Works.e_name) = (
+    ->     SELECT COUNT(e_name) FROM Works GROUP BY b_name ORDER BY COUNT(e_name) 
+    ->     LIMIT 1
+    -> );
++--------+-----------+
+| b_name | emp_count |
++--------+-----------+
+| HDFC   |         1 |
+| ICICI  |         1 |
++--------+-----------+
+2 rows in set (0.00 sec)

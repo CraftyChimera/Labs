@@ -1,0 +1,24 @@
+mysql> select * from Employee JOIN Works Using(e_name);
++---------+----------+---------+--------+--------+
+| e_name  | street   | city    | b_name | salary |
++---------+----------+---------+--------+--------+
+| John    | A street | Chennai | SBI    | 100000 |
+| Alice   | A street | Chennai | SBI    |  10000 |
+| Bob     | C street | Chennai | HDFC   |   3445 |
+| Dennis  | D street | Mumbai  | Canara |  64560 |
+| Edritch | E street | Delhi   | ICICI  |   3423 |
+| Fridge  | D street | Mumbai  | Canara |   2134 |
++---------+----------+---------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from Employee JOIN Works Using(e_name) WHERE b_name != 'SBI';
++---------+----------+---------+--------+--------+
+| e_name  | street   | city    | b_name | salary |
++---------+----------+---------+--------+--------+
+| Bob     | C street | Chennai | HDFC   |   3445 |
+| Dennis  | D street | Mumbai  | Canara |  64560 |
+| Edritch | E street | Delhi   | ICICI  |   3423 |
+| Fridge  | D street | Mumbai  | Canara |   2134 |
++---------+----------+---------+--------+--------+
+4 rows in set (0.00 sec)
+

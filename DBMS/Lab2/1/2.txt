@@ -1,0 +1,22 @@
+mysql> select * from Contestant JOIN Election using(ctid);
++------+--------+--------+-----------------+-------+-------+
+| ctid | ctname | ctaddr | number_of_votes | pname | cname |
++------+--------+--------+-----------------+-------+-------+
+|    1 | Fs     | Ga     |           10050 | A     | X     |
+|    1 | Fs     | Ga     |            4234 | D     | X     |
+|    2 | Gh     | gr     |            3145 | A     | Y     |
+|    2 | Gh     | gr     |            8456 | B     | Z     |
+|    3 | Hd     | gru    |           13455 | C     | W     |
+|    3 | Hd     | gru    |             313 | E     | W     |
++------+--------+--------+-----------------+-------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select * from Contestant JOIN Election using(ctid) WHERE number_of_votes >10000;
++------+--------+--------+-----------------+-------+-------+
+| ctid | ctname | ctaddr | number_of_votes | pname | cname |
++------+--------+--------+-----------------+-------+-------+
+|    1 | Fs     | Ga     |           10050 | A     | X     |
+|    3 | Hd     | gru    |           13455 | C     | W     |
++------+--------+--------+-----------------+-------+-------+
+2 rows in set (0.00 sec)
+

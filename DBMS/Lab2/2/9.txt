@@ -1,0 +1,53 @@
+mysql> select * from Patient;
++------+--------------+------+------+------------+---------+------+
+| P_id | Patient_Name | Sex  | Age  | Area       | City    | H_id |
++------+--------------+------+------+------------+---------+------+
+|    1 | Shivan       | M    |   21 | Ambattur   | Chennai |    1 |
+|    2 | Xavier       | M    |   18 | VadaPalani | Mumbai  |    2 |
+|    3 | Lokammitran  | M    |   20 | Kolathur   | Kovai   |    1 |
+|    4 | Skanny       | M    |   18 | Anna Nagar | Nagpur  |    3 |
+|    5 | Maya         | F    |   12 | T Nagar    | Erode   |    5 |
+|    6 | Mayamal      | F    |   13 | Erode      | Erode   |    2 |
+|    7 | Madhumita    | F    |   22 | Anna Nagar | Nagpur  |    4 |
++------+--------------+------+------+------------+---------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from Hospital;
++------+---------------+----------+-------------+------+
+| H_id | Hospital_name | Location | State       | T_id |
++------+---------------+----------+-------------+------+
+|    1 | Apollo        | Chennai  | Tamil Nadu  |    1 |
+|    2 | Rama          | Chennai  | Tamil Nadu  |    6 |
+|    3 | Apollo        | Kovai    | Tamil Nadu  |    4 |
+|    4 | Be Well       | Erode    | Tamil Nadu  | NULL |
+|    5 | Apollo        | Mumbai   | Maharashtra |    5 |
+|    6 | Ganesha       | Nagpur   | Maharasthra | NULL |
++------+---------------+----------+-------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from Patient JOIN Hospital using(H_id);
++------+------+--------------+------+------+------------+---------+---------------+----------+-------------+------+
+| H_id | P_id | Patient_Name | Sex  | Age  | Area       | City    | Hospital_name | Location | State       | T_id |
++------+------+--------------+------+------+------------+---------+---------------+----------+-------------+------+
+|    1 |    1 | Shivan       | M    |   21 | Ambattur   | Chennai | Apollo        | Chennai  | Tamil Nadu  |    1 |
+|    2 |    2 | Xavier       | M    |   18 | VadaPalani | Mumbai  | Rama          | Chennai  | Tamil Nadu  |    6 |
+|    1 |    3 | Lokammitran  | M    |   20 | Kolathur   | Kovai   | Apollo        | Chennai  | Tamil Nadu  |    1 |
+|    3 |    4 | Skanny       | M    |   18 | Anna Nagar | Nagpur  | Apollo        | Kovai    | Tamil Nadu  |    4 |
+|    5 |    5 | Maya         | F    |   12 | T Nagar    | Erode   | Apollo        | Mumbai   | Maharashtra |    5 |
+|    2 |    6 | Mayamal      | F    |   13 | Erode      | Erode   | Rama          | Chennai  | Tamil Nadu  |    6 |
+|    4 |    7 | Madhumita    | F    |   22 | Anna Nagar | Nagpur  | Be Well       | Erode    | Tamil Nadu  | NULL |
++------+------+--------------+------+------+------------+---------+---------------+----------+-------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from Patient JOIN Hospital using(H_id) WHERE Sex='F';
++------+------+--------------+------+------+------------+--------+---------------+----------+-------------+------+
+| H_id | P_id | Patient_Name | Sex  | Age  | Area       | City   | Hospital_name | Location | State       | T_id |
++------+------+--------------+------+------+------------+--------+---------------+----------+-------------+------+
+|    5 |    5 | Maya         | F    |   12 | T Nagar    | Erode  | Apollo        | Mumbai   | Maharashtra |    5 |
+|    2 |    6 | Mayamal      | F    |   13 | Erode      | Erode  | Rama          | Chennai  | Tamil Nadu  |    6 |
+|    4 |    7 | Madhumita    | F    |   22 | Anna Nagar | Nagpur | Be Well       | Erode    | Tamil Nadu  | NULL |
++------+------+--------------+------+------+------------+--------+---------------+----------+-------------+------+
+3 rows in set (0.01 sec)
+
+mysql> select * from Patient JOIN Hospital using(H_id) WHERE Sex='F' AND City=Location;
+Empty set (0.00 sec)

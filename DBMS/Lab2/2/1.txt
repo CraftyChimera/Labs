@@ -1,0 +1,23 @@
+mysql> select * from Patient;
++------+--------------+------+------+------------+---------+------+
+| P_id | Patient_Name | Sex  | Age  | Area       | City    | H_id |
++------+--------------+------+------+------------+---------+------+
+|    1 | Shivan       | M    |   21 | Ambattur   | Chennai | NULL |
+|    2 | Xavier       | M    |   18 | VadaPalani | Mumbai  | NULL |
+|    3 | Lokammitran  | M    |   20 | Kolathur   | Kovai   | NULL |
+|    4 | Skanny       | M    |   18 | Anna Nagar | Nagpur  | NULL |
+|    5 | Maya         | F    |   12 | T Nagar    | Erode   | NULL |
+|    6 | Mayamal      | F    |   13 | Erode      | Erode   | NULL |
+|    7 | Madhumita    | F    |   22 | Anna Nagar | Nagpur  | NULL |
++------+--------------+------+------+------------+---------+------+
+7 rows in set (0.01 sec)
+
+mysql> select * from Patient WHERE age < 15;
++------+--------------+------+------+---------+-------+------+
+| P_id | Patient_Name | Sex  | Age  | Area    | City  | H_id |
++------+--------------+------+------+---------+-------+------+
+|    5 | Maya         | F    |   12 | T Nagar | Erode | NULL |
+|    6 | Mayamal      | F    |   13 | Erode   | Erode | NULL |
++------+--------------+------+------+---------+-------+------+
+2 rows in set (0.00 sec)
+

@@ -1,0 +1,20 @@
+Command: SELECT COUNT(DISTINCT(dept_id)) FROM Department;
+
+mysql> SELECT COUNT(DISTINCT(dept_id)) FROM Department;
++--------------------------+
+| COUNT(DISTINCT(dept_id)) |
++--------------------------+
+|                        4 |
++--------------------------+
+1 row in set (0.00 sec)
+
+Command: SELECT COUNT(DISTINCT(designation)) FROM Staff;
+
+mysql> SELECT COUNT(DISTINCT(designation)) FROM Staff;
++------------------------------+
+| COUNT(DISTINCT(designation)) |
++------------------------------+
+|                            3 |
++------------------------------+
+1 row in set (0.00 sec)
+

@@ -1,0 +1,12 @@
+mysql> CREATE VIEW AllPatients AS SELECT Patient.Patient_Name,Patient.City,Patient.Area,Test_Report.H_ID FROM Patient LEFT JOIN Test_Report Using(P_ID) ORDER BY Patient.P_ID;
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> SELECT * FROM AllPatients WHERE City = 'Nagpur' ORDER BY Area;
++--------------+--------+------------+------+
+| Patient_Name | City   | Area       | H_ID |
++--------------+--------+------------+------+
+| Skanny       | Nagpur | Anna Nagar |    3 |
+| Madhumita    | Nagpur | Anna Nagar | NULL |
++--------------+--------+------------+------+
+2 rows in set (0.00 sec)
+

@@ -1,0 +1,8 @@
+mysql> select COUNT(*) from Hostel JOIN Student using(hno) WHERE hname="AmberB" and sname LIKE "A%";
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.01 sec)
+

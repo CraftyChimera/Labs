@@ -1,0 +1,12 @@
+mysql> SELECT hname,COUNT(*) FROM Hostel JOIN Warden using(hno) GROUP BY Hostel.hname;
++--------+----------+
+| hname  | COUNT(*) |
++--------+----------+
+| AmberA |        1 |
+| AmberB |        1 |
+| OpalA  |        1 |
+| OpalB  |        1 |
+| Beryl  |        1 |
++--------+----------+
+5 rows in set (0.00 sec)
+

@@ -1,0 +1,16 @@
+mysql> CREATE VIEW con_view AS SELECT ctid,cname,pname FROM Election JOIN Party Using(pname) JOIN Constituency Using(cname) JOIN Contestant Using(ctid);
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select * from con_view;
++------+-------+-------+
+| ctid | cname | pname |
++------+-------+-------+
+|    1 | X     | A     |
+|    2 | Y     | A     |
+|    2 | Z     | B     |
+|    3 | W     | C     |
+|    1 | X     | D     |
+|    2 | X     | D     |
+|    3 | W     | E     |
++------+-------+-------+
+7 rows in set (0.00 sec)

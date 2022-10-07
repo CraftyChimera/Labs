@@ -1,0 +1,11 @@
+mysql> SELECT b_name,AVG(salary) as emp_count FROM Works GROUP BY b_name Having 
+    ->     AVG(salary) = (
+    ->     SELECT AVG(salary) FROM Works GROUP BY b_name ORDER BY AVG(salary) DESC
+    ->     LIMIT 1
+    ->     );
++--------+-----------+
+| b_name | emp_count |
++--------+-----------+
+| ICICI  | 3423.0000 |
++--------+-----------+
+1 row in set (0.00 sec)

@@ -1,0 +1,28 @@
+mysql> SELECT * from Menu;
++------+---------+-----------+---------+---------+
+| hno  | day     | breakfast | lunch   | dinner  |
++------+---------+-----------+---------+---------+
+|    1 | Monday  | Idli      | Sambar  | Chutney |
+|    2 | Monday  | Dosa      | Aloo    | Sambar  |
+|    3 | Monday  | Pongal    | Sambar  | Chutney |
+|    4 | Tuesday | Rosemilk  | Coconut | Lemon   |
+|    5 | Monday  | Idli      | Pickle  | Chutney |
++------+---------+-----------+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE Menu SET breakfast="Noodles" WHERE hno=5;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * from Menu;
++------+---------+-----------+---------+---------+
+| hno  | day     | breakfast | lunch   | dinner  |
++------+---------+-----------+---------+---------+
+|    1 | Monday  | Idli      | Sambar  | Chutney |
+|    2 | Monday  | Dosa      | Aloo    | Sambar  |
+|    3 | Monday  | Pongal    | Sambar  | Chutney |
+|    4 | Tuesday | Rosemilk  | Coconut | Lemon   |
+|    5 | Monday  | Noodles   | Pickle  | Chutney |
++------+---------+-----------+---------+---------+
+5 rows in set (0.00 sec)
+

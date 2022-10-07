@@ -1,0 +1,8 @@
+mysql> select e_name,city from Works JOIN Employee Using(e_name) WHERE b_name="SBI";
++--------+---------+
+| e_name | city    |
++--------+---------+
+| John   | Chennai |
+| Alice  | Chennai |
++--------+---------+
+2 rows in set (0.00 sec)

@@ -1,0 +1,16 @@
+mysql> select e_name,street,city,salary from Works JOIN Employee Using(e_name) WHERE b_name="SBI";
++--------+----------+---------+--------+
+| e_name | street   | city    | salary |
++--------+----------+---------+--------+
+| John   | A street | Chennai | 100000 |
+| Alice  | A street | Chennai |  10000 |
++--------+----------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select e_name,street,city from Works JOIN Employee Using(e_name) WHERE b_name="SBI" AND salary > 14000;
++--------+----------+---------+
+| e_name | street   | city    |
++--------+----------+---------+
+| John   | A street | Chennai |
++--------+----------+---------+
+1 row in set (0.00 sec)

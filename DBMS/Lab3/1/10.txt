@@ -1,0 +1,8 @@
+mysql> SELECT b_name,AVG(salary) as emp_count FROM Works GROUP BY b_name Having AVG(salary) > (
+    -> SELECT AVG(salary) FROM Works GROUP BY b_name HAVING b_name = 'Canara' );
++--------+------------+
+| b_name | emp_count  |
++--------+------------+
+| SBI    | 55000.0000 |
++--------+------------+
+1 row in set (0.00 sec)

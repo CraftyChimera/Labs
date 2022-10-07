@@ -1,0 +1,12 @@
+mysql> CREATE VIEW ChildPat AS SELECT H.State,Count(*) AS ChildPos FROM Patient P,Hospital H,Test_Report T Where P.P_id = T.P_id and H.H_id = T.H_id and T.Test_result=true and Age<18 GROUP BY State;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> SELECT M.State,Count(*) As ChildPos FROM ChildPat P INNER JOIN (SELECT State,MAX(ChildPos) as ChildPos FROM ChildPat) AS M ON M.State = P.State AND M.ChildPos=P.ChildPos GROUP BY M.State;
++-------------+----------+
+| State       | ChildPos |
++-------------+----------+
+| Maharashtra |        1 |
++-------------+----------+
+1 row in set (0.00 sec)
+
+

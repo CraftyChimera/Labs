@@ -1,0 +1,44 @@
+mysql> select DATEDIFF(Discharge_date,Reporting_date) from Test_Report;
++-----------------------------------------+
+| DATEDIFF(Discharge_date,Reporting_date) |
++-----------------------------------------+
+|                                      10 |
+|                                      11 |
+|                                      10 |
+|                                      11 |
+|                                      10 |
+|                                      11 |
++-----------------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select min(DATEDIFF(Discharge_date,Reporting_date)) from Test_Report;
++----------------------------------------------+
+| min(DATEDIFF(Discharge_date,Reporting_date)) |
++----------------------------------------------+
+|                                           10 |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Hospital;
++------+---------------+----------+-------------+------+
+| H_id | Hospital_name | Location | State       | T_id |
++------+---------------+----------+-------------+------+
+|    1 | Apollo        | Chennai  | Tamil Nadu  |    1 |
+|    2 | Rama          | Chennai  | Tamil Nadu  |    6 |
+|    3 | Apollo        | Kovai    | Tamil Nadu  |    4 |
+|    4 | Be Well       | Erode    | Tamil Nadu  | NULL |
+|    5 | Apollo        | Mumbai   | Maharashtra |    5 |
+|    6 | Ganesha       | Nagpur   | Maharasthra | NULL |
++------+---------------+----------+-------------+------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT Hospital_name,Location,State FROM Hospital JOIN Test_Report Using(H_id) Where DATEDIFF(Discharge_date,Reporting_date) IN (Select min(DATEDIFF(Discharge_date,Reporting_date)) from Test_Report);
++---------------+----------+-------------+
+| Hospital_name | Location | State       |
++---------------+----------+-------------+
+| Apollo        | Chennai  | Tamil Nadu  |
+| Apollo        | Chennai  | Tamil Nadu  |
+| Apollo        | Mumbai   | Maharashtra |
++---------------+----------+-------------+
+3 rows in set (0.00 sec)
+

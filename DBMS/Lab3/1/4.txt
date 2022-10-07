@@ -1,0 +1,36 @@
+mysql> Select M.e_name,street as e_street,city as e_city,m_name from Employee E JOIN Managers M ON M.e_name=E.e_name;
++--------+----------+---------+--------+
+| e_name | e_street | e_city  | m_name |
++--------+----------+---------+--------+
+| Alice  | A street | Chennai | John   |
+| Fridge | D street | Mumbai  | Dennis |
++--------+----------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> Select * from (Select M.e_name,street as e_street,city as e_city,m_name from Employee E JOIN Managers M ON M.e_name=E.e_name) as A;
++--------+----------+---------+--------+
+| e_name | e_street | e_city  | m_name |
++--------+----------+---------+--------+
+| Alice  | A street | Chennai | John   |
+| Fridge | D street | Mumbai  | Dennis |
++--------+----------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> Select * from (Select M.e_name,street as e_street,city as e_city,m_name from Employee E JOIN Managers M ON M.e_name=E.e_name) as A Join Employee B on A.m_name=B.e_name;
++--------+----------+---------+--------+--------+----------+---------+
+| e_name | e_street | e_city  | m_name | e_name | street   | city    |
++--------+----------+---------+--------+--------+----------+---------+
+| Alice  | A street | Chennai | John   | John   | A street | Chennai |
+| Fridge | D street | Mumbai  | Dennis | Dennis | D street | Mumbai  |
++--------+----------+---------+--------+--------+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> Select A.e_name from (Select M.e_name,street as e_street,city as e_city,m_name from Employee E JOIN Managers M ON M.e_name=E.e_name) as A Join Employee B on A.m_name=B.e_name WHERE e_city=city;
++--------+
+| e_name |
++--------+
+| Alice  |
+| Fridge |
++--------+
+2 rows in set (0.00 sec)
+

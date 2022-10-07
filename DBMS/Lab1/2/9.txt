@@ -1,0 +1,29 @@
+mysql> SELECT sname,gender,hno,wname FROM Student LEFT JOIN Warden using(hno);
++-------+--------+------+-------+
+| sname | gender | hno  | wname |
++-------+--------+------+-------+
+| AAB   | M      |    1 | A     |
+| AAC   | M      |    3 | C     |
+| AAD   | F      |    2 | B     |
+| AAE   | M      |    4 | D     |
+| AAF   | F      |    5 | E     |
+| AAG   | M      |    2 | B     |
++-------+--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE VIEW hostel_view AS SELECT sname,gender,hno,wname FROM Student LEFT JOIN Warden using(hno);
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> select * from hostel_view;
++-------+--------+------+-------+
+| sname | gender | hno  | wname |
++-------+--------+------+-------+
+| AAB   | M      |    1 | A     |
+| AAC   | M      |    3 | C     |
+| AAD   | F      |    2 | B     |
+| AAE   | M      |    4 | D     |
+| AAF   | F      |    5 | E     |
+| AAG   | M      |    2 | B     |
++-------+--------+------+-------+
+6 rows in set (0.01 sec)
+

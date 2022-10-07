@@ -1,0 +1,13 @@
+Command: SELECT * FROM Staff WHERE dept_id in (SELECT dept_id FROM Department WHERE dept_name='cse');
+
+mysql> SELECT * FROM Staff WHERE dept_id in (SELECT dept_id FROM Department WHERE dept_name='cse');
++----------+---------+----------------+---------------+---------+
+| staff_id | name    | designation    | qualification | dept_id |
++----------+---------+----------------+---------------+---------+
+|        1 | Charlie | Asst. Prof     | M.Tech        |       1 |
+|        2 | Danny   | Prof           | PhD           |       1 |
+|        5 | Gerald  | Asst. Prof     | M.Tech        |       1 |
+|        6 | Jackie  | Associate Prof | M.Tech        |       1 |
++----------+---------+----------------+---------------+---------+
+4 rows in set (0.00 sec)
+

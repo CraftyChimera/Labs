@@ -1,0 +1,12 @@
+mysql> select pid,pname,leader,cname,number_of_votes FROM Party JOIN Election using(pname) WHERE number_of_votes in (select MAX(number_of_votes) FROM Party JOIN Election using(pname) GROUP BY cname);
++------+-------+--------+-------+-----------------+
+| pid  | pname | leader | cname | number_of_votes |
++------+-------+--------+-------+-----------------+
+|    1 | A     | Ad     | X     |           10050 |
+|    1 | A     | Ad     | Y     |            3145 |
+|    2 | B     | Be     | Z     |            8456 |
+|    3 | C     | Cf     | W     |           13455 |
+|    4 | D     | Dg     | X     |           10050 |
++------+-------+--------+-------+-----------------+
+5 rows in set (0.00 sec)
+

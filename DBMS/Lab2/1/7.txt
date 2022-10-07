@@ -1,0 +1,10 @@
+mysql> select * FROM Party JOIN Election using(pname) JOIN Contestant Using(ctid) WHERE number_of_votes in (select MAX(number_of_votes) FROM Party JOIN Election using(pname) GROUP BY cname) AND pname='A';
++------+-------+------+--------+-----------------+-------+--------+--------+
+| ctid | pname | pid  | leader | number_of_votes | cname | ctname | ctaddr |
++------+-------+------+--------+-----------------+-------+--------+--------+
+|    1 | A     |    1 | Ad     |           10050 | X     | Fs     | Ga     |
+|    2 | A     |    1 | Ad     |            3145 | Y     | Gh     | gr     |
++------+-------+------+--------+-----------------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+

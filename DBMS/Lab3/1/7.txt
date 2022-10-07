@@ -1,0 +1,8 @@
+mysql> SELECT e_name FROM Works WHERE salary > (SELECT AVG(salary) FROM Works);
++--------+
+| e_name |
++--------+
+| John   |
+| Dennis |
++--------+
+2 rows in set (0.00 sec)

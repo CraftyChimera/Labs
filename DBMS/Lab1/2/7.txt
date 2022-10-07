@@ -1,0 +1,22 @@
+mysql> SELECT * FROM Warden;
++-------+--------+------+
+| wname | qual   | hno  |
++-------+--------+------+
+| A     | Senior |    1 |
+| B     | Junior |    2 |
+| C     | Senior |    3 |
+| D     | Senior |    4 |
+| E     | Junior |    5 |
++-------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Warden Where qual="Senior";
++-------+--------+------+
+| wname | qual   | hno  |
++-------+--------+------+
+| A     | Senior |    1 |
+| C     | Senior |    3 |
+| D     | Senior |    4 |
++-------+--------+------+
+3 rows in set (0.00 sec)
+

@@ -1,0 +1,11 @@
+mysql> CREATE VIEW Pos AS SELECT State,Hospital_Name,Count(*) As NoCases FROM Hospital LEFT JOIN Test_Report Using(H_ID) WHERE Test_Report.Test_result = true and State='Tamil Nadu' GROUP BY Hospital_Name;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> SELECT P.State,P.Hospital_Name,P.NoCases FROM Pos P INNER JOIN (SELECT State,MAX(NoCases) as NoCases FROM Pos) AS M ON M.State = P.State AND M.NoCases=P.NoCases;
++------------+---------------+---------+
+| State      | Hospital_Name | NoCases |
++------------+---------------+---------+
+| Tamil Nadu | Apollo        |       2 |
++------------+---------------+---------+
+1 row in set (0.00 sec)
+

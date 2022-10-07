@@ -1,0 +1,11 @@
+mysql> select Patient_Name,Sex,Age,Area,City from Patient JOIN Hospital using(H_id) WHERE Hospital_name="Apollo";
++--------------+------+------+------------+---------+
+| Patient_Name | Sex  | Age  | Area       | City    |
++--------------+------+------+------------+---------+
+| Shivan       | M    |   21 | Ambattur   | Chennai |
+| Lokammitran  | M    |   20 | Kolathur   | Kovai   |
+| Skanny       | M    |   18 | Anna Nagar | Nagpur  |
+| Maya         | F    |   12 | T Nagar    | Erode   |
++--------------+------+------+------------+---------+
+4 rows in set (0.00 sec)
+

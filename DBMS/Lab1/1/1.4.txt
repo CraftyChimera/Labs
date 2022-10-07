@@ -1,0 +1,12 @@
+let X := 'Charlie'
+
+Command: SELECT COUNT(*) FROM Tutor WHERE staff_id in (SELECT staff_id from Staff where name='Charlie');
+
+mysql> SELECT COUNT(*) FROM Tutor WHERE staff_id in (SELECT staff_id from Staff where name='Charlie');
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+

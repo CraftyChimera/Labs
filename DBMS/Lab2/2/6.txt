@@ -1,0 +1,9 @@
+mysql> SELECT Location,Count(*) FROM Hospital Join Test_Report Using(H_id) WHERE Test_Result=true GROUP BY Location;
++----------+----------+
+| Location | Count(*) |
++----------+----------+
+| Chennai  |        2 |
+| Mumbai   |        1 |
++----------+----------+
+2 rows in set (0.00 sec)
+

@@ -1,0 +1,10 @@
+Command: select * FROM Student s1 JOIN Department s2 USING(dept_id) JOIN Tutor s3 USING(rollno) JOIN Staff s4 USING(staff_id) WHERE rollno='106120054';
+
+select * FROM Student s1 JOIN Department s2 USING(dept_id) JOIN Tutor s3 USING(rollno) JOIN Staff s4 USING(staff_id) WHERE rollno='106120054';
++----------+-----------+---------+------+--------+-------+-------+-------+-------+--------------+-----------+---------+-------------+---------------+---------+
+| staff_id | rollno    | dept_id | name | gender | mark1 | mark2 | mark3 | total | average      | dept_name | name    | designation | qualification | dept_id |
++----------+-----------+---------+------+--------+-------+-------+-------+-------+--------------+-----------+---------+-------------+---------------+---------+
+|        1 | 106120054 |       1 | John | M      |    70 |    70 |    60 |   200 | 66.666666666 | cse       | Charlie | Asst. Prof  | M.Tech        |       1 |
++----------+-----------+---------+------+--------+-------+-------+-------+-------+--------------+-----------+---------+-------------+---------------+---------+
+1 row in set (0.00 sec)
+

@@ -1,0 +1,23 @@
+mysql> select * FROM Party JOIN Election using(pname) WHERE number_of_votes in (select MAX(number_of_votes) FROM Party JOIN Election using(pname) GROUP BY cname);
++-------+------+--------+------+-----------------+-------+
+| pname | pid  | leader | ctid | number_of_votes | cname |
++-------+------+--------+------+-----------------+-------+
+| A     |    1 | Ad     |    1 |           10050 | X     |
+| A     |    1 | Ad     |    2 |            3145 | Y     |
+| B     |    2 | Be     |    2 |            8456 | Z     |
+| C     |    3 | Cf     |    3 |           13455 | W     |
+| D     |    4 | Dg     |    2 |           10050 | X     |
++-------+------+--------+------+-----------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select pname,COUNT(*) FROM Party JOIN Election using(pname) WHERE number_of_votes in (select MAX(number_of_votes) FROM Party JOIN Elect
+ion using(pname) GROUP BY cname) GROUP BY pname;
++-------+----------+
+| pname | COUNT(*) |
++-------+----------+
+| A     |        2 |
+| B     |        1 |
+| C     |        1 |
+| D     |        1 |
++-------+----------+
+4 rows in set (0.00 sec)

@@ -1,0 +1,25 @@
+mysql> select * from Works JOIN Employee Using(e_name);
++---------+--------+--------+----------+---------+
+| e_name  | b_name | salary | street   | city    |
++---------+--------+--------+----------+---------+
+| John    | SBI    | 100000 | A street | Chennai |
+| Alice   | SBI    |  10000 | A street | Chennai |
+| Bob     | HDFC   |   3445 | C street | Chennai |
+| Dennis  | Canara |  64560 | D street | Mumbai  |
+| Edritch | ICICI  |   3423 | E street | Delhi   |
+| Fridge  | Canara |   2134 | D street | Mumbai  |
++---------+--------+--------+----------+---------+
+6 rows in set (0.01 sec)
+
+mysql> Select e_name from Works JOIN Employee A Using(e_name) JOIN Bank B using(b_name) WHERE A.city=B.city;
++---------+
+| e_name  |
++---------+
+| John    |
+| Alice   |
+| Bob     |
+| Dennis  |
+| Edritch |
+| Fridge  |
++---------+
+6 rows in set (0.00 sec)
