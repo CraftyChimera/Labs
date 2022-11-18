@@ -1,0 +1,42 @@
+DELIMITER .
+CREATE FUNCTION find_emp_count()
+RETURNS INT DETERMINISTIC
+BEGIN
+    declare emp_count INT;
+    SELECT count(emp_no) FROM Employee INTo emp_count;
+    return emp_count;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE FUNCTION find_emp_count()
+    -> RETURNS INT DETERMINISTIC
+    -> BEGIN
+    ->     declare emp_count INT;
+    ->     SELECT count(emp_no) FROM Employee INTo emp_count;
+    ->     return emp_count;
+    -> END .
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> DELIMITER ;
+
+mysql> SELECT * FROM Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT find_emp_count();
++------------------+
+| find_emp_count() |
++------------------+
+|                6 |
++------------------+
+1 row in set (0.02 sec)

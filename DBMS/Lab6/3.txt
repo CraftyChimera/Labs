@@ -1,0 +1,57 @@
+DELIMITER .
+CREATE PROCEDURE raise_sal(
+    in empID int, 
+    in bonus int
+)
+BEGIN
+    UPDATE Employee
+    SET salary = salary + bonus
+    WHERE emp_no = empID;
+    SELECT * FROM Employee;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE PROCEDURE raise_sal(
+    ->     in empID int, 
+    ->     in bonus int
+    -> )
+    -> BEGIN
+    ->     UPDATE Employee
+    ->     SET salary = salary + bonus
+    ->     WHERE emp_no = empID;
+    ->     SELECT * FROM Employee;
+    -> END .
+MITER ;Query OK, 0 rows affected (0.16 sec)
+
+mysql> DELIMITER ;
+
+mysql> SELECT * from Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      3 | Ashish   | F    |  75000 | cc   |       2 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  45000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+7 rows in set (0.00 sec)
+
+mysql> CALL raise_sal(5,20000);
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      3 | Ashish   | F    |  75000 | cc   |       2 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+7 rows in set (0.15 sec)
+
+Query OK, 0 rows affected (0.15 sec)

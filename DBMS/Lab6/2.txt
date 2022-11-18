@@ -1,0 +1,35 @@
+DELIMITER .
+CREATE PROCEDURE insert_employee(
+    in emp_no int, in emp_name varchar(255), in sex enum('M','F','O'),
+    in salary int, in addr varchar(255), in dept_no int)
+BEGIN
+    INSERT INTO Employee VALUES (emp_no, emp_name, sex, salary, addr, dept_no);
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE PROCEDURE insert_employee(
+    ->     in emp_no int, in emp_name varchar(255), in sex enum('M','F','O'),
+    ->     in salary int, in addr varchar(255), in dept_no int)
+    -> BEGIN
+    ->     INSERT INTO Employee VALUES (emp_no, emp_name, sex, salary, addr, dept_no);
+    -> END .
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> DELIMITER ;
+mysql> CALL insert_employee(7,'Mary','F',110000,'ad',3);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * from Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      3 | Ashish   | F    |  75000 | cc   |       2 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  45000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+7 rows in set (0.00 sec)

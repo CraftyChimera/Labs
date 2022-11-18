@@ -5,6 +5,7 @@ assign_true = set()
 assign_false = set()
 n_props, n_splits = 0, 0
 
+
 def print_cnf(cnf):
     s = ''
     for i in cnf:
@@ -13,6 +14,7 @@ def print_cnf(cnf):
     if s == '':
         s = '()'
     print(s)
+
 
 def solve(cnf, literals):
     print('\nCNF = ', end='')
@@ -24,7 +26,7 @@ def solve(cnf, literals):
     assign_false = set(assign_false)
     n_splits += 1
     cnf = list(set(cnf))
-    units = [i for i in cnf if len(i)<3]
+    units = [i for i in cnf if len(i) < 3]
     units = list(set(units))
     if len(units):
         for unit in units:
@@ -58,13 +60,13 @@ def solve(cnf, literals):
                     if i >= len(cnf):
                         break
     print('Units =', units)
-    print('CNF after unit propogation = ', end = '')
+    print('CNF after unit propogation = ', end='')
     print_cnf(cnf)
 
     if len(cnf) == 0:
         return True
 
-    if sum(len(clause)==0 for clause in cnf):
+    if sum(len(clause) == 0 for clause in cnf):
         for i in new_true:
             assign_true.remove(i)
         for i in new_false:
@@ -106,5 +108,6 @@ def dpll():
         print('Unit Propogations =', n_props)
         print('\nResult: UNSATISFIABLE')
     print()
+
 
 dpll()

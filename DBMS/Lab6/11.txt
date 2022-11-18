@@ -1,0 +1,41 @@
+DELIMITER .
+CREATE FUNCTION find_emp_count_given_salary(income int)
+returns int deterministic
+BEGIN
+    declare emp_count int;
+    SELECT count(*) from Employee where salary > income into emp_count;
+    return emp_count;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE FUNCTION find_emp_count_given_salary(income int)
+    -> returns int deterministic
+    -> BEGIN
+    ->     declare emp_count int;
+    ->     SELECT count(*) from Employee where salary > income into emp_count;
+    ->     return emp_count;
+    -> END .
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> DELIMITER ;
+mysql> SELECT * FROM Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT find_emp_count_given_salary(85000);
++------------------------------------+
+| find_emp_count_given_salary(85000) |
++------------------------------------+
+|                                  2 |
++------------------------------------+
+1 row in set (0.00 sec)

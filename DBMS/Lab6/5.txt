@@ -1,0 +1,41 @@
+DELIMITER .
+CREATE FUNCTION find_max_salary()
+RETURNS INT DETERMINISTIC
+BEGIN
+    declare max_salary INT;
+    SELECT max(salary) FROM Employee INTo max_salary;
+    return max_salary;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE FUNCTION find_max_salary()
+    -> RETURNS INT DETERMINISTIC
+    -> BEGIN
+    ->     declare max_salary INT;
+    ->     SELECT max(salary) FROM Employee INTo max_salary;
+    ->     return max_salary;
+    -> END .
+
+Query OK, 0 rows affected (0.26 sec)
+
+mysql> SELECT * FROM Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT find_max_salary();
++-------------------+
+| find_max_salary() |
++-------------------+
+|            110000 |
++-------------------+
+1 row in set (0.07 sec)

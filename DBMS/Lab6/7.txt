@@ -1,0 +1,41 @@
+DELIMITER .
+CREATE FUNCTION find_emp_salary(empID INT)
+RETURNS INT DETERMINISTIC
+BEGIN
+    declare emp_salary INT;
+    SELECT salary FROM Employee WHERE emp_no = empID INTo emp_salary;
+    return emp_salary;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE FUNCTION find_emp_salary(empID INT)
+    -> RETURNS INT DETERMINISTIC
+    -> BEGIN
+    ->     declare emp_salary INT;
+    ->     SELECT salary FROM Employee WHERE emp_no = empID INTo emp_salary;
+    ->     return emp_salary;
+    -> END .
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> DELIMITER ;
+mysql> SELECT * FROM Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT find_emp_salary(5);
++--------------------+
+| find_emp_salary(5) |
++--------------------+
+|              65000 |
++--------------------+
+1 row in set (0.00 sec)

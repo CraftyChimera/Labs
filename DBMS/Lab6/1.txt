@@ -1,0 +1,21 @@
+DELIMITER .
+CREATE PROCEDURE display_emp(in emp_id int)
+BEGIN
+    SELECT * FROM Employee where emp_no = emp_id;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE PROCEDURE Display_Emp(in emp_id int)
+    -> BEGIN
+    ->     SELECT * FROM Employee where emp_no = emp_id;
+    -> END .
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> CALL Display_Emp(1);
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+1 row in set (0.00 sec)

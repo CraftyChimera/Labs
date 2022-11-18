@@ -1,0 +1,41 @@
+DELIMITER .
+CREATE FUNCTION find_avg_dept_salary(deptID INT)
+RETURNS INT DETERMINISTIC
+BEGIN
+    declare avg_salary INT;
+    SELECT avg(salary) FROM Employee WHERE dept_no = deptID INTo avg_salary;
+    return avg_salary;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE FUNCTION find_avg_dept_salary(deptID INT)
+    -> RETURNS INT DETERMINISTIC
+    -> BEGIN
+    ->     declare avg_salary INT;
+    ->     SELECT avg(salary) FROM Employee WHERE dept_no = deptID INTo avg_salary;
+    ->     return avg_salary;
+    -> END .
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> DELIMITER ;
+mysql> SELECT * FROM Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT find_avg_dept_salary(4);
++-------------------------+
+| find_avg_dept_salary(4) |
++-------------------------+
+|                   45000 |
++-------------------------+
+1 row in set (0.02 sec)

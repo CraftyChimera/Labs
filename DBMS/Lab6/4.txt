@@ -1,0 +1,50 @@
+DELIMITER .
+CREATE PROCEDURE delete_employee(
+    in empID int
+)
+BEGIN
+    DELETE FROM Employee
+    WHERE emp_no = empID;
+    SELECT * FROM Employee;
+END .
+DELIMITER ;
+
+mysql> DELIMITER .
+mysql> CREATE PROCEDURE delete_employee(
+    ->     in empID int
+    -> )
+    -> BEGIN
+    ->     DELETE FROM Employee
+    ->     WHERE emp_no = empID;
+    ->     SELECT * FROM Employee;
+    -> END .
+Query OK, 0 rows affected (0.15 sec)
+mysql> DELIMITER ;
+
+mysql> SELECT * from Employee;
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      3 | Ashish   | F    |  75000 | cc   |       2 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+
+mysql> CALL delete_employee(3);
++--------+----------+------+--------+------+---------+
+| emp_no | emp_name | sex  | salary | addr | dept_no |
++--------+----------+------+--------+------+---------+
+|      1 | John     | M    | 100000 | ad   |       3 |
+|      2 | Manny    | F    |  80000 | bf   |       1 |
+|      4 | Rohan    | F    |  50000 | de   |       4 |
+|      5 | Xina     | M    |  65000 | cc   |       2 |
+|      6 | Wok      | M    |  40000 | de   |       4 |
+|      7 | Mary     | F    | 110000 | ad   |       3 |
++--------+----------+------+--------+------+---------+
+6 rows in set (0.20 sec)
+
+Query OK, 0 rows affected (0.20 sec)
